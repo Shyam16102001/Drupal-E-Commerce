@@ -27,6 +27,16 @@ class AddProductController extends ControllerBase
         $query->condition('ct.product_id', $productId);
         $cartItemExists = $query->countQuery()->execute()->fetchField();
         $oldQuantity = $query->execute()->fetchField(1);
+        if ($cartItemExists && $quantity == 0) {
+          $availability = $availability + $oldQuantity;
+          $entity->get('field_availablity')->setValue($availability);
+          $entity->save();
+          \Drupal::database()->delete('cart_table')
+            ->condition('uid', $current_user->id())
+            ->condition('product_id', $productId)
+            ->execute();
+          return new RedirectResponse('/store/cart');
+        }
         if ($availability > 0) {
           if ($cartItemExists) {
             $availability = $availability - $quantity + $oldQuantity;
@@ -38,11 +48,6 @@ class AddProductController extends ControllerBase
                   'price' => $price,
                   'quantity' => $quantity,
                 ])
-                ->condition('uid', $current_user->id())
-                ->condition('product_id', $productId)
-                ->execute();
-            } else {
-              \Drupal::database()->delete('cart_table')
                 ->condition('uid', $current_user->id())
                 ->condition('product_id', $productId)
                 ->execute();
