@@ -1,0 +1,12 @@
+<?php
+function addProduct_theme()
+{
+  return [
+    'addProduct_button' => [
+      'variables' => [
+        'node' => NULL,
+        'quantity' => 1,
+      ],
+    ],
+  ];
+}

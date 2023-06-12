@@ -1,0 +1,7 @@
+cart.route:
+  path: '/cart'
+  defaults:
+    _controller: '\Drupal\cart\Controller\CartController::displayCart'
+    _title: 'Add to Cart'
+  requirements:
+    _permission: 'access content'

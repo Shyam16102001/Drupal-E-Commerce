@@ -1,0 +1,12 @@
+<?php
+function checkout_theme()
+{
+  return [
+    'checkout _button' => [
+      'variables' => [
+        'node' => NULL,
+        'quantity' => 1,
+      ],
+    ],
+  ];
+}

@@ -1,0 +1,4 @@
+name: "Custom User Roles"
+type: module
+description: "Allows users to select their role."
+core_version_requirement: ^8 || ^9

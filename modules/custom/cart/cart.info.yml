@@ -1,0 +1,4 @@
+name: "Cart"
+type: module
+description: "Allows users to view their products in the cart."
+core_version_requirement: ^8 || ^9

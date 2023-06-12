@@ -1,0 +1,1 @@
+.heading img{height:30px;}.product-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-gap:20px;}.product-grid .product{background-color:#f2f2f2;padding:20px;}.product-grid .product img{width:100%;max-width:200px;height:auto;}.product-grid .product .title{font-weight:bold;}.product-grid .product .price{color:#f00;}

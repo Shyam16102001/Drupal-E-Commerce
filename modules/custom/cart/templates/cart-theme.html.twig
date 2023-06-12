@@ -1,0 +1,69 @@
+{{ attach_library('cart/cart-style') }}
+<h3>Shopping Cart</h3>
+<div class="cart-page">
+	{% if products is not empty %}
+		<div class="left-side">
+			<div class="products-section">
+				<table class="cart-table">
+					<thead>
+						<tr>
+							<th>Product Details</th>
+							<th>Quantity</th>
+							<th>Price</th>
+							<th>Final Price</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% set totalItems = 0 %}
+						{% for product in products %}
+							{% set totalItems = totalItems + product.quantity %}
+							<tr>
+								<td>
+									<a href="/store/node/{{ product.product_id }}" class="product-detail-link">
+										<div class="product-detail">
+											<div class="image-container">{{ product.image }}</div>
+											<p class="cart-title">{{ product.product_title }}</p>
+										</div>
+									</a>
+								</td>
+								<td>
+									<button class="quantity-button" onclick="editQuantity({{ product.product_id }})">
+										{{ product.quantity }}
+									</button>
+									<br>
+									<button class="remove-button" data-product-id="{{ product.id }}" onclick="removeFromCart({{ product.product_id }})">Remove</button>
+								</td>
+								<td class="price">₹
+									{{ product.price }}</td>
+								<td class="total-price">₹ {{ "%.2f"|format(product.quantity * product.price) }}</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="right-side">
+			<div class="order-summary">
+				<h3>Order Summary</h3>
+				<br>
+				<div>
+					<p>Total Items:
+						<span id="total-items">{{ totalItems }}</span>
+					</p>
+					<p>Total Cost: ₹<span id="total-cost"></span>
+					</p>
+				</div>
+				<br>
+				<div>
+					<button class="checkout-button" onclick="redirectToCheckout()">Checkout</button>
+				</div>
+			</div>
+		</div>
+	{% else %}
+		<div class="empty-cart">
+			<img src="http://localhost/store/sites/default/files/2023-06/empty_cart.png" alt="No Product Found" data-align="center">
+			<p>Your cart is empty.</p>
+			<a href="/store">Click here to continue shopping</a>
+		</div>
+	{% endif %}
+</div>

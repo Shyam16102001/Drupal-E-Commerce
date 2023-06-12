@@ -1,0 +1,12 @@
+<?php
+function cart_theme()
+{
+  return [
+    'cart_theme' => [
+      'variables' => [
+        'title' => '',
+        'products' => [],
+      ],
+    ],
+  ];
+}

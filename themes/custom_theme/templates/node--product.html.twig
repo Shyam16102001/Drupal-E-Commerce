@@ -1,0 +1,36 @@
+{% set current = user %}
+<article{{attributes}}>
+	<div class="product-container">
+		<div class="product-image">
+			{% if content.field_product_image is not empty %}
+				{{ content.field_product_image }}
+			{% else %}
+				<img src="https://cdn.dribbble.com/users/1247449/screenshots/3984840/no_img.png" alt="Image not found">
+			{% endif %}
+		</div>
+		<div class="product-details">
+			<h2{{title_attributes}}>{{ node.title.value }}</h2>
+			<div class="product-category">
+				{{ content.field_category }}
+			</div>
+			<div class="product-body">{{ content.body }}</div>
+			<div class="product-price">{{ content.field_price }}</div>
+
+			{% if 'customer' in user.getroles() %}
+				<div class="quantity-selector">
+					<button class="quantity-decrease" onclick="decreaseQuantity({{ node.id }})">-</button>
+					<input type="text" class="quantity-input" id="quantity-input" value="1" readonly>
+					<button class="quantity-increase" onclick="increaseQuantity({{ node.id }}, {{ content.field_availablity['#items'][0].value }})">+</button>
+				</div>
+				<div class="add-to-cart-button">
+					<a href="/store/add-to-cart/{{ node.id }}/1" id="add-to-cart-link" class="button">Add to Cart</a>
+				</div>
+			{% endif %}
+			{% if node.uid.entity.id == user.id %}
+				<div class="add-to-cart-button">
+					<a href="{{ path('entity.node.edit_form', {'node': node.id}) }}" class="button">Edit</a>
+				</div>
+			{% endif %}
+		</div>
+	</div>
+</article>

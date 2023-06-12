@@ -1,0 +1,13 @@
+name: Custom Theme
+type: theme
+description: "Custom theme for e-commerce store"
+core_version_requirement: ^8 || ^9
+base theme: bootstrap
+libraries:
+  - custom_theme/global-styling
+regions:
+  branding: "Site Branding"
+  navigation: "Main navigation"
+  user_management: "User Management"
+  content: "Content"
+  footer: "Footer"

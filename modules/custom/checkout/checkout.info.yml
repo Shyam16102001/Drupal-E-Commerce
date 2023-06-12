@@ -1,0 +1,4 @@
+name: "Checkout"
+type: module
+description: "Allows users to checkout their products from the cart."
+core_version_requirement: ^8 || ^9
