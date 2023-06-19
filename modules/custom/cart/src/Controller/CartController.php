@@ -17,7 +17,7 @@ class CartController extends ControllerBase
     $uid = $current_user->id();
     $roles = $current_user->getRoles();
     $cart_items = [];
-    if (in_array('customer', $roles)) {
+    if ($current_user) {
       $query = \Drupal::database()->select('cart_table', 'cart');
       $query->fields('cart', ['product_id', 'quantity'])
         ->condition('cart.uid', $uid, '=');

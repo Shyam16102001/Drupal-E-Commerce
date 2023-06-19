@@ -10,13 +10,14 @@
 		</div>
 		<div class="product-details">
 			<h2{{title_attributes}}>{{ node.title.value }}</h2>
+			{{ content.field_rating }}
 			<div class="product-category">
 				{{ content.field_category }}
 			</div>
 			<div class="product-body">{{ content.body }}</div>
 			<div class="product-price">{{ content.field_price }}</div>
 
-			{% if 'customer' in user.getroles() %}
+			{% if 'customer' in user.getroles() or 'vendor' in user.getroles() and node.uid.entity.id != user.id%}
 				<div class="quantity-selector">
 					<button class="quantity-decrease" onclick="decreaseQuantity({{ node.id }})">-</button>
 					<input type="text" class="quantity-input" id="quantity-input" value="1" readonly>

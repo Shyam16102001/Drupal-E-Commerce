@@ -3,7 +3,6 @@
 namespace Drupal\addProduct\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
-use Drupal\Core\Entity\EntityInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class AddProductController extends ControllerBase
@@ -15,7 +14,7 @@ class AddProductController extends ControllerBase
     $current_user = \Drupal::currentUser();
     $roles = $current_user->getRoles();
 
-    if (in_array('customer', $roles)) {
+    if (!empty($current_user)) {
       if ($entity instanceof \Drupal\node\NodeInterface) {
         $productId = $entity->id();
         $productTitle = $entity->label();
@@ -73,7 +72,7 @@ class AddProductController extends ControllerBase
         return new RedirectResponse('/store/cart');
       }
     } else {
-      $this->messenger()->addStatus($this->t('Kindly login as a customer to add the products'));
+      $this->messenger()->addStatus($this->t('Kindly login to add the products'));
       return new RedirectResponse('/store/login');
     }
   }
