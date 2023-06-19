@@ -2,7 +2,7 @@
 
 This repository contains an ecommerce application built using Drupal, featuring a custom theme and modules.
 
-![Home Page](https://github.com/Shyam16102001/Drupal-E-Commerce/assets/55325014/52393c3c-cad7-4150-b308-fef4501079bd)
+![Home Page](https://github.com/Shyam16102001/Drupal-E-Commerce/assets/55325014/99374fc5-bc86-4f11-ac29-229961681dac)
 
 ## About Drupal
 <img alt="Drupal Logo" src="https://www.drupal.org/files/Wordmark_blue_RGB.png" height="60px">
