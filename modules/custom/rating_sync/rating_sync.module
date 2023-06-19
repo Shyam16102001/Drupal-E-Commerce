@@ -1,0 +1,25 @@
+<?php
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\node\NodeInterface;
+
+function rating_sync_entity_presave(EntityInterface $entity)
+{
+    $logger = \Drupal::service('logger.factory')->get('rating_sync');
+    $logger->notice('1Rating synchronization executed for order: @order_id', ['@order_id' => $entity->id()]);
+    if ($entity instanceof NodeInterface && $entity->getType() === 'cart') {
+        $logger = \Drupal::service('logger.factory')->get('rating_sync');
+        $logger->notice('2Rating synchronization executed for order: @order_id', ['@order_id' => $entity->id()]);
+        $product_reference = $entity->get('field_product')->entity;
+        if ($product_reference) {
+            $logger = \Drupal::service('logger.factory')->get('rating_sync');
+            $logger->notice('3Rating synchronization executed for order: @order_id', ['@order_id' => $entity->id()]);
+            $fivestar_field = $entity->get('field_rating');
+            $rating_value = $fivestar_field->getValue()[0]['rating'];
+            $logger = \Drupal::service('logger.factory')->get('rating_sync');
+            $logger->notice('value: @order_id', ['@order_id' => $rating_value]);
+            $product_reference->set('field_rating', $rating_value);
+            $product_reference->save();
+        }
+    }
+}

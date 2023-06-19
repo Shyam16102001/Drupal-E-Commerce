@@ -1,0 +1,5 @@
+name: 'Rating Sync'
+type: module
+description: 'Custom module to synchronize ratings between Product and Order content types'
+package: Custom
+core_version_requirement: ^8 || ^9

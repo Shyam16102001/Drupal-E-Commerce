@@ -24,13 +24,15 @@
         "drupal/core-recommended": "^9.5",
         "drupal/core-vendor-hardening": "^9.5",
         "drupal/devel": "^5.1",
-        "drupal/webprofiler": "9.0",
+        "drupal/entity": "1.4",
+        "drupal/entity_reference_revisions": "1.10",
+        "drupal/fivestar": "^1.0@alpha",
         "drush/drush": "^11.5"
     },
     "conflict": {
         "drupal/drupal": "*"
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
         "allow-plugins": {
