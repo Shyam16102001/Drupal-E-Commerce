@@ -56,7 +56,6 @@ class CheckoutController extends ControllerBase
             ->condition('uid', $uid)
             ->execute();
         $this->messenger()->addStatus($this->t('Order Placed Successfully. Updated Wallet Balance: @balance', ['@balance' => $balance]));
-        // $this->messenger()->addStatus($this->t('Order Placed Sucessfully. Updated Wallet Balance: $balance '));
-        return new RedirectResponse('/store');
+        return new RedirectResponse('/store/my-order');
     }
 }

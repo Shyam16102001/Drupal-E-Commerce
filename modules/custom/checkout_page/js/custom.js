@@ -8,6 +8,14 @@ document.addEventListener("DOMContentLoaded", function () {
   );
   var balance = parseFloat(balanceElement.textContent.replace(/[^0-9.]/g, ""));
 
+  if (subtotal > balance) {
+    balanceElement.style.color = "red";
+    payNowButton.disabled = true;
+  } else {
+    balanceElement.style.color = "";
+    payNowButton.disabled = false;
+  }
+
   var deliveryOptions = document.querySelectorAll(".delivery-option");
 
   deliveryOptions.forEach(function (option) {
