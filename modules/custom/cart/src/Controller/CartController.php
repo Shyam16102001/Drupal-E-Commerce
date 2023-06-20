@@ -17,7 +17,7 @@ class CartController extends ControllerBase
     $uid = $current_user->id();
     $roles = $current_user->getRoles();
     $cart_items = [];
-    if ($current_user) {
+    if ($current_user->isAuthenticated()) {
       $query = \Drupal::database()->select('cart_table', 'cart');
       $query->fields('cart', ['product_id', 'quantity'])
         ->condition('cart.uid', $uid, '=');
@@ -49,7 +49,7 @@ class CartController extends ControllerBase
         '#products' => $cart_items,
       ];
     } else {
-      $this->messenger()->addStatus($this->t('Kindly login as a customer to add the products'));
+      $this->messenger()->addStatus($this->t('Kindly login to access the cart.'));
       return new RedirectResponse('/store/login');
     }
   }

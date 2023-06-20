@@ -1,0 +1,4 @@
+name: "Checkout Page"
+type: module
+description: "Allows users to check their products and place the order."
+core_version_requirement: ^8 || ^9

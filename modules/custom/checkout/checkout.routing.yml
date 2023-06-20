@@ -1,5 +1,5 @@
 checkout.checkout:
-  path: '/checkout'
+  path: '/placeorder/{parameter}'
   defaults:
     _controller: '\Drupal\checkout\Controller\CheckoutController::checkout'
     _title: 'Checkout'

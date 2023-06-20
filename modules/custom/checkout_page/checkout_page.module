@@ -1,0 +1,16 @@
+<?php
+function checkout_page_theme()
+{
+  return [
+    'checkout_page_theme' => [
+      'variables' => [
+        'title' => '',
+        'address' => [],
+        'user' => '',
+        'totalItems' => '',
+        'subTotal' => '',
+        'balance' => '',
+      ],
+    ],
+  ];
+}

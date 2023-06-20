@@ -1,0 +1,103 @@
+{{ attach_library('checkout_page/checkout_page-style') }}
+
+<div class="checkout">
+	<h3>{{ title }}</h3>
+	<div class="checkout-wrapper">
+		<div class="checkout-left">
+			<div class="user-details">
+				<h4>Shipping Details</h4>
+				<hr>
+				{% if address is not empty %}
+					{% for item in address %}
+						<div class="address-item">
+							{% if item.value.given_name is not empty and item.value.family_name is not empty %}
+								<p>
+									<strong>{{ item.value.given_name }}
+										{{ item.value.family_name }}</strong>
+								</p>
+							{% endif %}
+							{% if item.value.address_line1 is not empty or item.value.address_line2 is not empty %}
+								<p>{{ item.value.address_line1 }}
+									,
+									{{ item.value.address_line2 }}</p>
+							{% endif %}
+							{% if item.value.locality is not empty and item.value.postal_code is not empty %}
+								<p>{{ item.value.locality }}
+									,
+									{{ item.value.postal_code }}</p>
+							{% endif %}
+						</div>
+					{% endfor %}
+				{% else %}
+					<p>No address found.</p>
+				{% endif %}
+			</div>
+
+			<div class="delivery-method">
+				<h4>Delivery Method</h4>
+				<hr>
+				<button class="delivery-option" name="delivery-method" value="one_day">
+					<i class="fa-solid fa-truck-fast"></i>
+					One-Day
+				</button>
+				<button class="delivery-option active" name="delivery-method" value="express">
+					<i class="fa-solid fa-motorcycle"></i>
+					Express
+				</button>
+				<button class="delivery-option" name="delivery-method" value="normal">
+					<i class="fa-solid fa-person-hiking"></i>
+					Normal
+				</button>
+			</div>
+
+			<div class="payment-method">
+				<h4>Payment Method</h4>
+				<hr>
+				<button class="payment-option active" name="payment-method" value="wallet" disabled>
+					<i class="fa-solid fa-wallet"></i>
+					Wallet
+				</button>
+			</div>
+		</div>
+
+
+		<div class="checkout-right">
+			<div class="order-summary">
+				<img src="http://localhost/store/sites/default/files/2023-06/pay_online.png" alt="Payment">
+				<hr>
+				{% if totalItems == 1 %}
+					<h2>{{ totalItems }}
+						item</h2>
+				{% else %}
+					<h2>{{ totalItems }}
+						items</h2>
+				{% endif %}
+				<div class="summary-item">
+					<span>Subtotal:</span>
+					<span id="subtotal">₹{{ subTotal }}</span>
+				</div>
+				<div class="summary-item">
+					<span>Delivery Service:</span>
+					<span id="delivery_cost">₹50</span>
+				</div>
+				<hr>
+				<div class="summary-item">
+					<h4>Total:</h4>
+					<span id="total">₹{{ subTotal +50 }}
+					</span>
+				</div>
+				<hr>
+				<div class="summary-item wallet_balance">
+					<span>Wallet Balance:</span>
+					<span id="balance">₹{{ balance }}</span>
+				</div>
+			</div>
+
+
+			<button class="pay-button" id="pay-now-button">Pay Now
+				<i class="fa-solid fa-arrow-right"></i>
+			</button>
+		</div>
+
+	</div>
+</div>

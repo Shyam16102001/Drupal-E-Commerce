@@ -16,6 +16,7 @@
     ],
     "require": {
         "composer/installers": "^1.9",
+        "drupal/address": "1.12",
         "drupal/admin_toolbar": "3.4",
         "drupal/asset_injector": "2.17",
         "drupal/bootstrap": "3.28",
@@ -27,6 +28,7 @@
         "drupal/entity": "1.4",
         "drupal/entity_reference_revisions": "1.10",
         "drupal/fivestar": "^1.0@alpha",
+        "drupal/fontawesome": "2.25",
         "drush/drush": "^11.5"
     },
     "conflict": {

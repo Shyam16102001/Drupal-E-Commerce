@@ -1,0 +1,7 @@
+checkout_page.checkout_page:
+  path: '/checkout'
+  defaults:
+    _controller: '\Drupal\checkout_page\Controller\CheckoutPageController::checkout'
+    _title: 'Checkout Page'
+  requirements:
+    _permission: 'access content'

@@ -233,6 +233,18 @@ body {
   margin-bottom: 10px;
 }
 
+.product-rating {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.product-rating .fivestar-basic{
+  display: flex;
+  justify-content: center;
+}
+
 .product-category {
   font-size: 16px;
   margin-bottom: 10px;
