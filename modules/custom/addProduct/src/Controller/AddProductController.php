@@ -14,7 +14,7 @@ class AddProductController extends ControllerBase
     $current_user = \Drupal::currentUser();
     $roles = $current_user->getRoles();
 
-    if (!empty($current_user)) {
+    if ($current_user->isAuthenticated()) {
       if ($entity instanceof \Drupal\node\NodeInterface) {
         $productId = $entity->id();
         $productTitle = $entity->label();
@@ -72,7 +72,7 @@ class AddProductController extends ControllerBase
         return new RedirectResponse('/store/cart');
       }
     } else {
-      $this->messenger()->addStatus($this->t('Kindly login to add the products'));
+      $this->messenger()->addError($this->t('Kindly login to add the products'));
       return new RedirectResponse('/store/login');
     }
   }

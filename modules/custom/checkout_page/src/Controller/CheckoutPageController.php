@@ -28,7 +28,7 @@ class CheckoutPageController extends ControllerBase
                 ->condition('cart.uid', $uid, '=');
             $results = $query->execute()->fetchAll();
             if (empty($results)) {
-                $this->messenger()->addStatus($this->t('Kindly add product to the cart before performing checkout.'));
+                $this->messenger()->addWarning($this->t('Kindly add product to the cart before performing checkout.'));
                 return new RedirectResponse('/store');
             }
 

@@ -49,7 +49,7 @@ class CartController extends ControllerBase
         '#products' => $cart_items,
       ];
     } else {
-      $this->messenger()->addStatus($this->t('Kindly login to access the cart.'));
+      $this->messenger()->addError($this->t('Kindly login to access the cart.'));
       return new RedirectResponse('/store/login');
     }
   }
